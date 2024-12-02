@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Eligibility Result</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #141E30, #243B55);
+            background-size: cover;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            animation: dropDown 0.6s ease-out;
+        }
+        @keyframes dropDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+        p {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        .success {
+            color: #32CD32;
+            font-weight: bold;
+        }
+        .error {
+            color: #FF4500;
+            font-weight: bold;
+        }
+        a {
+            text-decoration: none;
+            color: #FFD700;
+            font-size: 1.1em;
+            margin-top: 20px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #FFC107;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Eligibility Result</h1>
+        {% if sms_sent %}
+            <p class="success">SMS Sent Successfully!</p>
+        {% endif %}
+        <p>Loan ID: <strong>{{ loan_id }}</strong></p>
+        <p>Status: <span class="{{ 'success' if loan_status == 'Approved' else 'error' }}">{{ loan_status }}</span></p>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>
